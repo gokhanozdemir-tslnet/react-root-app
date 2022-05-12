@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { Fragment } from "react";
+import Navigation from "./pages/navigationpage/navigation.page";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/home.page";
+import Invoice from "./pages/InvoicePage/invoice.page";
+import HomeSubContent from "./pages/home.sub.content";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />}>
+          <Route path="home" element={<HomeSubContent />} />
+        </Route>
+        <Route path="/invoice" element={<Invoice />} />
+      </Routes>
+    </Fragment>
   );
 }
 
